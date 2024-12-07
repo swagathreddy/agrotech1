@@ -1,0 +1,213 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Forum</title>
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap"
+        rel="stylesheet"
+    />
+    <style>
+        :root {
+            --color-earth: #8b4513;
+            --color-leaf: #4caf50;
+            --color-wheat: #f5deb3;
+            --color-soil: #3e2723;
+            --color-sky: #87ceeb;
+            --transition-smooth: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            scroll-behavior: smooth;
+        }
+        .container {
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+        body {
+            font-family: "Inter", sans-serif;
+            background: url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h1, h2 {
+            font-family: "Merriweather", serif;
+            color: var(--color-wheat);
+            text-align: center;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .question-form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .question-form input[type="text"],
+        .question-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--color-leaf);
+            border-radius: 5px;
+        }
+
+        .btn {
+            background-color: var(--color-leaf);
+            color: white;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--color-soil);
+        }
+
+        /* New styling for each question-answer container */
+        .question-answer-box {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 20px;
+        }
+
+        .question-answer-box h3 {
+            font-family: "Merriweather", serif;
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .question-answer-box p {
+            margin-bottom: 15px;
+        }
+
+        .answer-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--color-leaf);
+            border-radius: 5px;
+        }
+
+        .answers {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            border-left: 5px solid var(--color-leaf);
+        }
+
+        .answers h4 {
+            margin-top: 0;
+        }
+
+        .answers ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .answers li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-container">
+        {% include 'navbar.html' %}
+    </div>
+    <div class="container">
+        <!-- Language Selection Form -->
+        
+
+        <h1>Community Forum</h1>
+        <button class="btn" onclick="toggleQuestionForm()">Ask Question</button>
+        
+        <div id="question-form" class="question-form" style="display: none;">
+            <h2>Add Question</h2>
+            <form method="post" action="{% url 'add_question' %}">
+                {% csrf_token %}
+                <input type="text" id="question-title" name="title" placeholder="Enter your question title">
+                <textarea id="question-content" name="content" rows="4" placeholder="Enter question content"></textarea>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+        <a href="{% url 'translate_text' %}" class="btn" style="margin-top: 20px;" target="_blank" >Translate Below Text (copy the text and paste in next section)</a>
+
+        <h2>All Questions</h2>
+        <ul style="list-style-type:none; padding:0;">
+            {% for question in questions %}
+                <li>
+                    <div class="question-answer-box">
+                        <h3>{{ question.title }}</h3>
+                        <p>{{ question.content }}</p>
+                        <button class="btn" onclick="toggleAnswerForm('{{ question.id }}')">Answer</button>
+                        <form id="answer-form-{{ question.id }}" class="answer-form" style="display: none;" method="post" action="{% url 'add_answer' question.id %}">
+                            {% csrf_token %}
+                            <textarea name="content" rows="4" placeholder="Your answer"></textarea>
+                            <button type="submit" class="btn">Submit</button>
+                        </form>
+                        <div class="answers">
+                            <h4>Answers</h4>
+                            <ul>
+                                {% if question.answers.all %}
+                                    {% for answer in question.answers.all %}
+                                        <li>{{ answer.content }}</li>
+                                    {% endfor %}
+                                {% else %}
+                                    <p>No answers yet. Be the first to answer!</p>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script>
+        function toggleQuestionForm() {
+            const form = document.getElementById('question-form');
+            form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'block' : 'none';
+        }
+
+        function toggleAnswerForm(questionId) {
+            const form = document.getElementById('answer-form-' + questionId);
+            form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

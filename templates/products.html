@@ -1,0 +1,323 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agricultural Online Mart</title>
+    <link rel="stylesheet" href="{% static 'css/global.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --color-earth: #8b4513;
+        --color-leaf: #4caf50;
+        --color-wheat: #f5deb3;
+        --color-soil: #3e2723;
+        --color-sky: #87ceeb;
+        --transition-smooth: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      h2 {
+        font-family: "Merriweather", serif;
+        color: var(--color-wheat);
+        font-size: 2.8rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .online-mart-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+        padding: 2rem;
+      }
+
+      .items-pane {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+        align-content: start;
+      }
+
+      .item {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow-md);
+        transition: var(--transition-smooth);
+        border: 2px solid var(--color-wheat);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .item:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+      }
+
+      .item h3 {
+        color: var(--color-soil);
+        font-family: "Merriweather", serif;
+        font-size: 1.5rem;
+        margin: 0.5rem 0;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--color-leaf);
+      }
+
+      .item p {
+        color: #4a4a4a;
+        font-weight: 600;
+        margin: 0.5rem 0;
+      }
+
+      .add-to-cart-btn {
+        background-color: var(--color-leaf);
+        color: white;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        margin-top: auto;
+        transition: all 0.3s ease;
+      }
+
+      .add-to-cart-btn:hover {
+        background-color: var(--color-soil);
+        transform: translateY(-2px);
+      }
+
+      .cart-pane {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: var(--shadow-lg);
+        border: 2px solid var(--color-wheat);
+        position: sticky;
+        top: 2rem;
+        height: fit-content;
+      }
+
+      .cart-pane h2 {
+        color: var(--color-soil);
+        font-size: 2rem;
+        text-align: left;
+        margin-bottom: 1.5rem;
+        text-shadow: none;
+      }
+
+      .cart-items {
+        max-height: 400px;
+        overflow-y: auto;
+        margin-bottom: 1.5rem;
+      }
+
+      .cart-item {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 1rem;
+        align-items: center;
+        background: white;
+        padding: 1rem;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .cart-item img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .cart-item h4 {
+        margin: 0;
+        color: var(--color-soil);
+        font-weight: 600;
+      }
+
+      .total-price {
+        font-size: 1.2rem;
+        color: var(--color-soil);
+        font-weight: 700;
+        padding: 1rem 0;
+        border-top: 2px solid var(--color-wheat);
+        margin-top: 1rem;
+      }
+
+      .checkout-btn {
+        background-color: var(--color-earth);
+        color: var(--color-wheat);
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        width: 100%;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+      }
+
+      .checkout-btn:hover {
+        background-color: var(--color-soil);
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 1024px) {
+        .online-mart-container {
+          grid-template-columns: 1fr;
+        }
+
+        .cart-pane {
+          position: static;
+          margin-top: 2rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          margin: 20px auto;
+        }
+
+        h2 {
+          font-size: 2.2rem;
+        }
+
+        .items-pane {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar-container">
+      {% include 'navbar2.html' %}
+    </div>
+
+    <div class="container">
+      <h2>Agricultural Marketplace</h2>
+      <main class="online-mart-container">
+        <div class="items-pane">
+          <div class="item" data-id="1">
+            <img src="{% static 'images/apple.jpg' %}" alt="Fresh Apples">
+            <h3>Apple</h3>
+            <p>Price: ₹100.00</p>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+          <div class="item" data-id="2">
+            <img src="{% static 'images/banana.jpg' %}" alt="Fresh Bananas">
+            <h3>Banana</h3>
+            <p>Price: ₹50.00</p>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+          <div class="item" data-id="3">
+            <img src="{% static 'images/rice.jpg' %}" alt="Premium Rice">
+            <h3>Rice (1Kg)</h3>
+            <p>Price: ₹45.00</p>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+          <div class="item" data-id="4">
+            <img src="{% static 'images/carrot.cms' %}" alt="Fresh Carrots">
+            <h3>Carrot</h3>
+            <p>Price: ₹30.00</p>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+          <div class="item" data-id="5">
+            <img src="{% static 'images/potato.webp' %}" alt="Fresh Potatoes">
+            <h3>Potato</h3>
+            <p>Price: ₹25.00</p>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="cart-pane">
+          <h2>Your Cart</h2>
+          <div class="cart-items">
+            <!-- Cart items will be dynamically added here -->
+          </div>
+          <div class="total-price">
+            Total: <span class="total-amount">₹0.00</span>
+          </div>
+          <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+        const cartItems = document.querySelector('.cart-items');
+        let totalPrice = 0;
+
+        addToCartButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            const item = button.parentElement;
+            const itemName = item.querySelector('h3').innerText;
+            const itemPrice = parseFloat(item.querySelector('p').innerText.split('₹')[1]);
+            
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+            cartItem.innerHTML = `
+              <img src="${item.querySelector('img').src}" alt="${itemName}">
+              <h4>${itemName}</h4>
+              <p>₹${itemPrice.toFixed(2)}</p>
+            `;
+            
+            cartItems.appendChild(cartItem);
+            
+            totalPrice += itemPrice;
+            document.querySelector('.total-amount').innerText = `₹${totalPrice.toFixed(2)}`;
+
+            // Add animation effect
+            cartItem.style.opacity = '0';
+            cartItem.style.transform = 'translateX(-20px)';
+            setTimeout(() => {
+              cartItem.style.transition = 'all 0.3s ease';
+              cartItem.style.opacity = '1';
+              cartItem.style.transform = 'translateX(0)';
+            }, 50);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

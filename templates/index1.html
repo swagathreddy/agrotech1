@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Project</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Open+Sans:wght@400&family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <style>
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh; /* Adjust the height as needed */
+            background-image: url('./static/images/bgimage.png'); /* Set your background image */
+            background-size: cover;
+            background-position: center;
+        }
+    
+        .options-container {
+            display: flex;
+            justify-content: space-around;
+            width: 300px; /* Adjust as needed */
+            position: relative; /* Add position relative */
+            z-index: 1; /* Set z-index to ensure it's above the blurred background */
+        }
+    
+        .option-image {
+            width: 150px; /* Adjust as needed */
+            height: 150px; /* Adjust as needed */
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out; /* Add transition for smooth scaling */
+        }
+    
+        .option-image:hover {
+            transform: scale(1.1); /* Scale the image slightly on hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navbar -->
+    <div class="top-navbar">
+        <img src="{% static 'images/ATDC-logo-01-01.png' %}" alt="Image 1" class="navbar-image">
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="options-container">
+            <a href="{% url 'register_farmer' %}"><img src="{% static 'images/farmer.png' %}" alt="Farmer" class="option-image"></a>
+            <a href="{% url 'tourists' %}"><img src="{% static 'images/tourist.png' %}" alt="Tourist" class="option-image"></a>
+        </div>
+    </main>
+</body>
+</html>

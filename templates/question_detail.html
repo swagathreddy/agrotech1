@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ question.title }}</title>
+</head>
+<body>
+    <h1>{{ question.title }}</h1>
+    <p>{{ question.content }}</p>
+    
+    <!-- Form for adding answers -->
+    <form method="post" action="{% url 'add_answer' question.id %}">
+        {% csrf_token %}
+        <textarea name="content" rows="4" cols="50" placeholder="Your answer"></textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Answers</h2>
+    <ul>
+        {% for answer in question.answers.all %}
+            <li>{{ answer.content }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

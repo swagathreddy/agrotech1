@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmers</title>
+    <!-- Link to global CSS -->
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Your existing styles -->
+    <style>
+        /* Additional styles for course containers */
+        .course-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .course {
+            flex: 0 0 calc(33.3333% - 10px);
+            border: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .course:hover {
+            background-color: #e0e0e0;
+        }
+
+        .read-more-btn {
+            display: block;
+            width: 150px;
+            margin: 20px auto;
+            padding: 10px 15px;
+            text-align: center;
+            background-color: lightgreen;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .read-more-btn:hover {
+            background-color: #3ab43a;
+        }
+
+        .footer {
+            background: #c3e6c0;
+            padding: 50px 0;
+            text-align: center;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .course {
+                flex: 0 0 calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .course {
+                flex: 0 0 100%;
+            }
+
+            .read-more-btn {
+                width: 100%;
+            }
+
+            .footer {
+                padding: 20px 0;
+            }
+
+            .container {
+                padding: 0 10px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .footer {
+                padding: 10px 0;
+            }
+
+            .read-more-btn {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+
+            .course {
+                padding: 15px;
+                font-size: 14px;
+            }
+
+            .footer-text p, .footer-text a {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navbar -->
+    <div id="navbar-container">
+        {% include 'navbar.html' %}
+    </div>
+
+    <main>
+        <div class="container">
+            <div class="section">
+                <h2>Welcome to our Farmer Page</h2>
+                <p>Welcome to our Farmer Page, where we aim to empower farmers and enhance their engagement in agritourism. We believe that farmers play a crucial role in sustainable agriculture and rural development. Through our platform, farmers can access resources, connect with tourists, and showcase their unique farming practices. Whether you're a seasoned farmer or just starting out, we're here to support you on your agritourism journey.</p>
+            </div>
+
+            <div class="section">
+                <h2>About Agritourism</h2>
+                <p>Agritourism is a growing trend that offers farmers the opportunity to diversify their income and connect with consumers. It involves opening up farms to visitors and offering educational and recreational activities. By participating in agritourism, farmers can increase their visibility, build relationships with customers, and promote agricultural education. From farm tours and tastings to workshops and farm stays, agritourism offers something for everyone.</p>
+            </div>
+
+            <div class="section">
+                <h2>Farming Courses</h2>
+                <!-- Farming Courses -->
+                <div class="course-container">
+                    <!-- Course 1 -->
+                    <div class="course">
+                        <h3>Organic Farming</h3>
+                        <p>Learn the basics of organic farming and sustainable practices.</p>
+                    </div>
+                    <!-- Course 2 -->
+                    <div class="course">
+                        <h3>Agroforestry</h3>
+                        <p>Discover the benefits of integrating trees into your farming system.</p>
+                    </div>
+                    <!-- Course 3 -->
+                    <div class="course">
+                        <h3>Hydroponics</h3>
+                        <p>Explore the world of hydroponic farming and its advantages.</p>
+                    </div>
+                </div>
+                <!-- Read More button -->
+                <a href="{% url 'courses' %}" class="read-more-btn">Read More</a>
+            </div>
+
+        <footer class="footer">
+            <div class="footer-logo">
+                <a href="https://agritourism.in">
+                    <img src="{% static 'images/ATDC-logo-01-01.png' %}" alt="Agritourism India">
+                </a>
+            </div>
+            <div class="footer-text">
+                <p>Keep Farm In The Family, Family In The Farm</p>
+                <p>Connect with us:</p>
+            </div>
+            <div class="footer-social-icons">
+                <a href="https://www.facebook.com/AgriTourismIndia/" target="_blank"><i class="fa fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/in/agritourismindia/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                <a href="https://twitter.com/PandurangTaware" target="_blank"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.instagram.com/agritourismindia/" target="_blank"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCMQawFaee-k4Kw6t5zqI9Dg" target="_blank"><i class="fa fa-youtube"></i></a>
+            </div>
+            <div class="footer-text">
+                <p>Working Hours:</p>
+                <p>Monday - Saturday: 10:00 am - 07:00 pm</p>
+            </div>
+            <div class="footer-text">
+                <p>Contact Us: +91-9226432980</p>
+            </div>
+            <div class="footer-text">
+                <p>Copyright © 2024 Agritourism India. All rights reserved.</p>
+                <p><a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a> | <a href="#">Support</a></p>
+            </div>
+        </footer>
+        
+    </main>
+</body>
+</html>

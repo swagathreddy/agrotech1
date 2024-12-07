@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Login</title>
+    <!-- Link to global CSS -->
+    <link rel="stylesheet" href="static/css/global.css">
+    <link rel="stylesheet" href="static/css/styles.css"> <!-- Your existing styles -->
+    <style>
+        /* Additional Styles */
+        body {
+        font-family: "Inter", sans-serif;
+        background: url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+      }
+        .container {
+            padding: 50px; /* Increased padding */
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px 70px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-container form label {
+            margin-bottom: 10px;
+            align-self: flex-start; /* Align labels to the left */
+        }
+        .form-container form input[type="text"],
+        .form-container form input[type="password"] {
+            width: 100%; /* Adjusted width */
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container form button[type="submit"] {
+            width: 100%; /* Adjusted width */
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-container form button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+    <!-- Include navbar -->
+    <div id="navbar-container">
+        {% include 'navbar.html' %}
+    </div>
+    
+    <main>
+        <div class="container">
+            <div class="form-container">
+                <h2>Farmer Login</h2>
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <button type="submit">Login</button>
+                </form>
+                <p>Don't have an account? <a href="{% url 'register_farmer' %}">Sign up</a></p>
+            </div>
+        </div>
+    </main>
+    
+</body>
+</html>

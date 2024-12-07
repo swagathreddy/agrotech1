@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agritourism Centres</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef; /* Changed background color */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Styling */
+        #navbar-container {
+            margin-bottom: 2rem;
+        }
+
+        /* Main Content Section */
+        main {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Centering the Title */
+        h1 {
+            text-align: center;
+            font-size: 2.5rem; /* Increased font size */
+            margin-bottom: 2rem;
+            color: #343a40; /* Changed color to a darker shade */
+        }
+
+        /* Flex Container for Card Layout */
+        .farm-card-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+            gap: 2rem;
+            width: 100%;
+            max-width: auto; /* Increased max width of container */
+            margin-top: 2rem;
+            padding-left: 1rem; /* Reduced padding */
+            padding-right: 1rem; /* Reduced padding */
+        }
+
+        /* Card Styles */
+        .farm-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem; /* Added padding to the card */
+        }
+
+        .farm-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Image Style */
+        .farm-image {
+            width: 100%; /* Ensures image takes full width of the card */
+            height: 200px; /* Fixed height */
+            object-fit: cover; /* Ensures image fills the area without distortion */
+            object-position: center; /* Keeps the image centered */
+            margin-bottom: 1rem; /* Margin between the image and the card content */
+        }
+
+        /* Card Content */
+        .farm-card-body {
+            padding: 1.5rem;
+            margin-top: 1rem; /* Space between image and card content */
+        }
+
+        .farm-card-body h2 {
+            font-size: 1.8rem;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+
+        .farm-card-body p {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .farm-card-body strong {
+            color: #555;
+        }
+
+        /* Button Style */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .farm-card-container {
+                grid-template-columns: 1fr; /* 1 card per row on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navbar -->
+    <div id="navbar-container">
+        {% include 'navbar.html' %}
+    </div>
+
+    <!-- Main Content -->
+    <main class="main">
+        <h1>Explore Agritourism Centres</h1>
+
+        <!-- Farm Cards Section -->
+        <div class="farm-card-container">
+            {% for farm in farms %}
+            <div class="farm-card">
+                <!-- Farm Image -->
+                <img class="farm-image" src="https://www.nobroker.in/blog/wp-content/uploads/2023/01/Types-Of-Land-Zoning-1.jpg" alt="Farm Image">
+                
+                <!-- Farm Details -->
+                <div class="farm-card-body">
+                    <h2>{{ farm.farm_name }}</h2>
+                    <p><strong>Farmer Name:</strong> {{ farm.name }}</p>
+                    <p><strong>Email:</strong> {{ farm.email }}</p>
+                    <p><strong>Phone:</strong> {{ farm.phone }}</p>
+                    <p><strong>Location:</strong> {{ farm.location }}</p>
+                    <p><strong>Type of Soil:</strong> {{ farm.type_of_soil }}</p>
+                    <p><strong>Type of Crop:</strong> {{ farm.type_of_crop }}</p>
+                    <p><strong>Description:</strong> {{ farm.description }}</p>
+                    
+                    <!-- Book Now Button -->
+                    <a href="https://transitxpress.up.railway.app/" class="btn" target="_blank">Book Now</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+</body>
+</html>

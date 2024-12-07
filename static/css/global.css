@@ -1,0 +1,41 @@
+/* Reset some default browser styles */
+body, h1, h2, h3, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    font-weight: 400; /* Default font weight */
+    line-height: 1.5; /* Line height for better readability */
+}
+
+/* Fonts */
+body {
+    font-family: 'Open Sans', sans-serif; /* Default font for body text */
+}
+
+h1, h2, h3 {
+    font-family: 'Roboto', sans-serif; /* Roboto for headings */
+    font-weight: 700; /* Bold for headings */
+    margin-bottom: 20px; /* Spacing below headings */
+}
+
+p {
+    margin-bottom: 20px; /* Spacing below paragraphs */
+}
+
+a {
+    font-family: 'Montserrat', sans-serif; /* Montserrat for anchor links */
+    text-decoration: none; /* Remove underline */
+    color: #007BFF; /* Link color */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+a:hover {
+    color: #0056b3; /* Darker color on hover */
+}
+
+/* Additional styles */
+ul {
+    list-style-type: disc; /* Bullet points for unordered lists */
+    margin-bottom: 20px; /* Spacing below lists */
+}
+
+/* Add more styles as needed */

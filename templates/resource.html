@@ -1,0 +1,458 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Agricultural Community</title>
+    <link rel="stylesheet" href="{% static 'css/global.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+        body {
+    font-family: "Inter", sans-serif;
+    background: url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  .about-section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-lg);
+    border: 2px solid var(--color-wheat);
+  }
+
+  h1, h2 {
+    font-family: "Merriweather", serif;
+    color: var(--color-soil);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+    text-align: center;
+    color: var(--color-wheat);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    border-bottom: 2px solid var(--color-leaf);
+    padding-bottom: 0.5rem;
+  }
+
+  .mission-values {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .value-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+    border: 1px solid var(--color-wheat);
+  }
+
+  .value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .value-card h3 {
+    color: var(--color-earth);
+    font-family: "Merriweather", serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Updated team grid styles */
+  .team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .team-grid::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .team-grid::-webkit-scrollbar-track {
+    background: var(--color-wheat);
+    border-radius: 4px;
+  }
+
+  .team-grid::-webkit-scrollbar-thumb {
+    background: var(--color-leaf);
+    border-radius: 4px;
+  }
+
+  .team-member {
+    flex: 0 0 300px;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+    border: 1px solid var(--color-wheat);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .team-member img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 4px solid var(--color-leaf);
+    transition: transform 0.3s ease;
+  }
+
+  .team-member:hover img {
+    transform: scale(1.05);
+  }
+
+  .team-member h3 {
+    color: var(--color-soil);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-family: "Merriweather", serif;
+  }
+
+  .team-member p {
+    color: var(--color-earth);
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .footer {
+    background: rgba(195, 230, 192, 0.9);
+    padding: 3rem 0;
+    text-align: center;
+    margin-top: 4rem;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .footer-logo img {
+    max-width: 200px;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-text {
+    color: var(--color-soil);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-social-icons a {
+    color: var(--color-soil);
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+  }
+
+  .footer-social-icons a:hover {
+    color: var(--color-leaf);
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      margin: 20px auto;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+    }
+
+    .about-section {
+      padding: 1.5rem;
+    }
+
+    .team-member {
+      flex: 0 0 260px;
+      padding: 1.5rem;
+    }
+
+    .team-member img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+
+      .resource-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .resource-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        transition: var(--transition-smooth);
+        border: 1px solid var(--color-wheat);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .resource-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .resource-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .resource-content {
+        padding: 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .resource-type {
+        display: inline-block;
+        padding: 0.4rem 1rem;
+        background-color: var(--color-leaf);
+        color: white;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        align-self: flex-start;
+      }
+
+      .resource-title {
+        color: var(--color-soil);
+        font-family: "Merriweather", serif;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+      }
+
+      .resource-description {
+        color: #666;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+      }
+
+      .resource-link {
+        display: inline-flex;
+        align-items: center;
+        color: var(--color-leaf);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .resource-link:hover {
+        color: var(--color-earth);
+        transform: translateX(5px);
+      }
+
+      .resource-link::after {
+        content: "→";
+        margin-left: 5px;
+        transition: transform 0.3s ease;
+      }
+
+      .resource-link:hover::after {
+        transform: translateX(5px);
+      }
+
+      /* Update media queries */
+      @media (max-width: 768px) {
+        .container {
+          margin: 20px auto;
+        }
+
+        h1 {
+          font-size: 2.2rem;
+        }
+
+        h2 {
+          font-size: 1.8rem;
+        }
+
+        .about-section {
+          padding: 1.5rem;
+        }
+
+        .team-member {
+          flex: 0 0 260px;
+          padding: 1.5rem;
+        }
+
+        .team-member img {
+          width: 150px;
+          height: 150px;
+        }
+
+        .resource-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar-container">
+      {% include 'navbar.html' %}
+    </div>
+
+    <div class="container">
+      <h1>About Our Agricultural Community</h1>
+
+      <div class="about-section">
+        <h2>Our Story</h2>
+        <p>Founded with a vision to revolutionize agriculture through sustainable practices and community engagement, our platform serves as a bridge between farmers, consumers, and agricultural innovation. We believe in preserving traditional farming wisdom while embracing modern technological advancements to create a more sustainable and prosperous future for agriculture.</p>
+      </div>
+
+      <div class="about-section">
+        <h2>Our Mission & Values</h2>
+        <div class="mission-values">
+          <div class="value-card">
+            <h3>Sustainability</h3>
+            <p>Promoting environmentally conscious farming practices that ensure long-term agricultural sustainability and ecological balance.</p>
+          </div>
+          <div class="value-card">
+            <h3>Community</h3>
+            <p>Building strong connections between farmers, consumers, and agricultural experts to foster knowledge sharing and mutual growth.</p>
+          </div>
+          <div class="value-card">
+            <h3>Innovation</h3>
+            <p>Embracing technological advancements and modern farming techniques while respecting traditional agricultural wisdom.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <h2>Resource Library</h2>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <img src="{% static 'images/start_organic.webp' %}" alt="Organic Farming Guide" class="resource-image">
+            <div class="resource-content">
+              <span class="resource-type">Guide</span>
+              <h3 class="resource-title">Complete Guide to Organic Farming</h3>
+              <p class="resource-description">Learn the fundamentals of organic farming, from soil preparation to pest management using natural methods.</p>
+              <a href="https://www.jerseygirlorganics.co.nz/post/a-step-by-step-guide-to-organic-farming" class="resource-link" target="_blank">Read Guide</a>
+            </div>
+          </div>
+
+          <div class="resource-card">
+            <img src="{% static 'images/sustainable.jpg' %}" alt="Sustainable Practices Video" class="resource-image">
+            <div class="resource-content">
+              <span class="resource-type">Video</span>
+              <h3 class="resource-title">Sustainable Farming Practices</h3>
+              <p class="resource-description">Watch our comprehensive video series on implementing sustainable farming practices in your agricultural operations.</p>
+              <a href="https://youtu.be/iloAQmroRK0?si=kWa6XAYE8SvMZQa3" class="resource-link" target="_blank">Watch Video</a>
+            </div>
+          </div>
+
+          <div class="resource-card">
+            <img src="{% static 'images/rotation.jpg' %}" alt="Crop Rotation Article" class="resource-image">
+            <div class="resource-content">
+              <span class="resource-type">Article</span>
+              <h3 class="resource-title">Benefits of Crop Rotation</h3>
+              <p class="resource-description">Discover how crop rotation can improve soil health, reduce pest problems, and increase your farm's productivity.</p>
+              <a href="https://vlsci.com/blog/crop-rotation-benefits/" class="resource-link" target="_blank">Read Article</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <h2>Our Team</h2>
+        <div class="team-grid">
+          <div class="team-member">
+            <img src="{% static 'images/f2.jpg' %}" alt="Team Member">
+            <h3>Rajesh Patel</h3>
+            <p>Agricultural Expert</p>
+          </div>
+          <div class="team-member">
+            <img src="{% static 'images/f123.jpg' %}" alt="Team Member">
+            <h3>Priya Singh</h3>
+            <p>Community Manager</p>
+          </div>
+          <div class="team-member">
+            <img src="{% static 'images/f3.jpg' %}" alt="Team Member">
+            <h3>Amit Kumar</h3>
+            <p>Sustainable Farming Specialist</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="{% static 'images/ATDC-logo-01-01.png' %}" alt="Agritourism India">
+        </div>
+        <div class="footer-text">
+          <p>Keep Farm In The Family, Family In The Farm</p>
+          <p>Working Hours: Monday - Saturday: 10:00 am - 07:00 pm</p>
+          <p>Contact Us: +91-9226432980</p>
+        </div>
+        <div class="footer-social-icons">
+          <a href="https://www.facebook.com/AgriTourismIndia/" target="_blank"><i class="fa fa-facebook-f"></i></a>
+          <a href="https://www.linkedin.com/in/agritourismindia/" target="_blank"><i class="fa fa-linkedin"></i></a>
+          <a href="https://twitter.com/PandurangTaware" target="_blank"><i class="fa fa-twitter"></i></a>
+          <a href="https://www.instagram.com/agritourismindia/" target="_blank"><i class="fa fa-instagram"></i></a>
+          <a href="https://www.youtube.com/channel/UCMQawFaee-k4Kw6t5zqI9Dg" target="_blank"><i class="fa fa-youtube"></i></a>
+        </div>
+        <div class="footer-text">
+          <p>Copyright © 2024 Agritourism India. All rights reserved.</p>
+          <p><a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a> | <a href="#">Support</a></p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

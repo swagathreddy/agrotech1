@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farming Courses</title>
+    <!-- Link to global CSS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">  <!-- Your existing styles -->
+    <style>
+        /* Additional styles for course containers */
+        .course-section {
+            margin-top: 30px;
+            border: 1px solid #ccc;
+            display: block;
+            padding: 60px;
+            width: 1400px;
+            border-radius: 8px;
+            background-image: url('/static/images/bgimage.png');
+        }
+
+        .course-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .course {
+            flex: 0 0 calc(33.3333% - 10px);
+            border: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color:white;
+            margin-left: 20px;
+        }
+
+        .course:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navbar -->
+    <div id="navbar-container">
+        {% include 'navbar.html' %}
+    </div>
+
+    <main>
+        <h1>Farming Courses</h1>
+        <div class="container">
+            <!-- Paddy Courses -->
+            <div class="course-section">
+                <h2>Paddy Courses</h2>
+                <div class="course-container">
+                    <!-- Seedling Course -->
+                    <div class="course" onclick="window.location.href='https://youtu.be/jsVNkA7F1qo?list=PLYA8jFF7Rfxt7FN7B0_ixEU6H5ztDdeL2';">
+                        <h3>Seedling</h3>
+                        <p>Learn about paddy seedling.</p>
+                    </div>
+                    <!-- Nurturing Course -->
+                    <div class="course" onclick="window.location.href='https://youtu.be/-akNFz-Ot40?list=PLYA8jFF7Rfxt7FN7B0_ixEU6H5ztDdeL2';">
+                        <h3>Nurturing</h3>
+                        <p>Learn about nurturing paddy.</p>
+                    </div>
+                    <!-- Harvesting Course -->
+                    <div class="course" onclick="window.location.href='https://youtu.be/XMDnaQ6hFtU?list=PLYA8jFF7Rfxt7FN7B0_ixEU6H5ztDdeL2';">
+                        <h3>Harvesting</h3>
+                        <p>Learn about paddy harvesting.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,385 @@
+/* Reset some default browser styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Top Navbar styling */
+.top-navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 10px 0;
+}
+
+.navbar-image {
+    width: 10rem; /* Adjust the size as needed */
+    height: auto;
+    margin: 0 15px; /* Add some space between the images */
+}
+
+/* Main Content styling */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Adjust the height as needed */
+    background-image: url('./static/images/1691152886310.jpeg'); /* Set your background image */
+    background-size: cover;
+    background-position: center;
+}
+
+.options-container {
+    display: flex;
+    justify-content: space-between;
+    width: 200px; /* Adjust the width as needed */
+}
+
+.option-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.7); /* Transparent white background */
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.option-button:hover {
+    background-color: rgba(255, 255, 255, 0.9); /* Lighter transparent white on hover */
+}
+/* styles.css */
+
+/* Navbar links */
+.navbar-links {
+    margin-left: auto; /* Pushes the links to the right */
+}
+
+.nav-link {
+    margin-left: 20px; /* Spacing between links */
+    text-decoration: none;
+    color: #333; /* Link color */
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #007BFF; /* Link color on hover */
+}
+
+/* Section Containers */
+.section-container {
+    width: 100%; /* Set width to 100% to take up full width */
+    max-width: 800px; /* Set maximum width for sections */
+    margin: 40px auto; /* Center align and add margin */
+    padding: 20px; /* Add padding inside sections */
+    background-color: #f9f9f9; /* Background color for sections */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    display: block; /* Ensure block-level display */
+    clear: both; /* Clear any floats */
+}
+
+/* Headings and Text */
+.intro-section h1, .about-section h2, .centres-section h2, .contact-section h2 {
+    margin-bottom: 20px; /* Spacing below headings */
+}
+
+.intro-section p, .about-section p, .centres-section p, .contact-section p {
+    margin-bottom: 20px; /* Spacing below paragraphs */
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #f2f2f2;
+    padding: 20px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav img {
+    width: 150px;
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+
+
+.section {
+    width: 100%;
+    padding: 30px;
+    margin: 30px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.section-content p{
+    margin-left: 2rem;
+    margin-right: 1rem;
+}
+.text-content,
+.image-content {
+    flex: 1;
+}
+
+.section-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+.why-atdc-section {
+    /* ... Previous styles ... */
+    background-color: #f9f9f9; /* Change background color to differentiate the section */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.grid-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.grid-item:hover {
+    transform: translateY(-10px);
+}
+
+.grid-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.grid-item p {
+    font-size: 16px;
+    color: #555;
+}
+.explore-more-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background-color: lightgreen;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.explore-more-btn:hover {
+    background-color: rgb(17, 213, 138);
+}
+.agritourism-centres-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text horizontally */
+}
+/* ... Previous CSS ... */
+
+/* Search Input Section styles */
+
+.search-section {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.search-input {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 70%; /* Adjust the width as needed */
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: lightgreen;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search-results {
+    position: absolute;
+    width: 70%; /* Adjust the width as needed */
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.result-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.result-item:hover {
+    background-color: #f0f0f0;
+}
+.content-block {
+    display: flex;
+    margin-top: 50px;
+    align-items: center;
+
+}
+
+.land-image img {
+    width: 40%; /* Adjust as needed */
+    height: auto;
+    border-radius: 5px;
+    margin-left: 200px;
+}
+
+.land-details {
+    width: 40%;
+    margin-right: 200px;
+}
+
+.land-details h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.land-details p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.google-map {
+    margin-top: 20px;
+}
+
+.google-map a {
+    text-decoration: none;
+    color: blue;
+}
+.main {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.farm-details {
+    padding: 50px;
+    flex: 1;
+}
+
+.farm-details h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+.farm-details p{
+    font-size: 1rem;
+}
+.farm-image {
+    flex: 1;
+    margin-left: 20px;
+    width: 50%;
+    border-radius: 5px;
+}
+.footer {
+    background: #f4f4f4;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.footer-logo img {
+    max-width: 30%;
+    height: auto;
+}
+
+.footer-text {
+    margin-top: 20px;
+}
+
+.footer-social-icons {
+    margin-top: 20px;
+}
+
+.footer-social-icons a {
+    margin: 0 10px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    padding: 20px; /* Adjust as needed */
+}
+
+.footer {
+    background: #c3e6c0;
+    padding: 50px 0;
+    text-align: center;
+    margin-top: auto; /* Pushes the footer to the bottom */
+    width: 100%;
+}
+
+.footer-logo img {
+    max-width: 10%;
+    height: auto;
+}
+
+.footer-text {
+    margin-top: 20px;
+}
+
+.footer-social-icons {
+    margin-top: 20px;
+}
+
+.footer-social-icons a {
+    margin: 0 10px;
+    color: #333;
+    text-decoration: none;
+}

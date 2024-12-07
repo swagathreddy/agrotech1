@@ -1,0 +1,391 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agritourism Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* Carousel Styles */
+.carousel {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+.carousel-inner {
+    position: relative;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-content {
+    backdrop-filter: blur(3px);
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 1rem;
+    max-width: 800px;
+}
+
+.carousel-content h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 1rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.carousel-btn.prev {
+    left: 1rem;
+}
+
+.carousel-btn.next {
+    right: 1rem;
+}
+
+/* Section Styles */
+.section {
+    padding: 4rem 2rem;
+    margin: 2rem 0;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.grid-item {
+    background: var(--background-light);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+}
+
+.grid-item h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+/* Footer Styles */
+.footer {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-light);
+    padding: 4rem 2rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.footer-logo img {
+    max-width: 200px;
+    margin-bottom: 1rem;
+}
+
+.footer-social-icons {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.footer-social-icons a {
+    color: var(--text-light);
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.footer-social-icons a:hover {
+    transform: scale(1.2);
+}
+
+.explore-more-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    align-items: center;
+    
+}
+
+.explore-more-btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+    .lend-farm-btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background-color: #4caf50;
+        color: white;
+        text-decoration: none;
+        border-radius: 2rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .lend-farm-btn:hover {
+        background-color: #388e3c;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+@media (max-width: 768px) {
+    .carousel {
+        height: 400px;
+    }
+
+    .carousel-content h2 {
+        font-size: 2rem;
+    }
+
+    .section {
+        padding: 2rem 1rem;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+<main>
+ <div id="navbar-container">
+         {% include 'navbar.html' %}
+    </div>
+    <!-- Carousel Section -->
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1500076656116-558758c991c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                <div class="carousel-content">
+                    <h2>Welcome to AgriTourism</h2>
+                    <p>Experience the magic of rural life and sustainable farming</p>
+                </div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                <div class="carousel-content">
+                    <h2>Farm Experience</h2>
+                    <p>Get hands-on experience with traditional farming methods</p>
+                </div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                <div class="carousel-content">
+                    <h2>Nature's Beauty</h2>
+                    <p>Immerse yourself in the peaceful countryside</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-btn prev">❮</button>
+        <button class="carousel-btn next">❯</button>
+    </div>
+
+    <div class="container">
+        <!-- About Section -->
+        <div class="section">
+            <h2>About Agritourism</h2>
+            <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 100px;">
+                <!-- Image -->
+                <img src="../static/images/agro.jpg" 
+                     alt="Agritourism" 
+                     style="width: 25%; border-radius: 1rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                
+                <!-- Text Content -->
+                <p style="width: 50%; font-size: 1rem;">
+                    Discover the perfect blend of agriculture and tourism, offering unique experiences that connect you with 
+                    nature, local culture, and sustainable farming practices. Agritourism provides an opportunity to experience 
+                    the charm of rural life, learn traditional farming methods, and engage with the community in a meaningful way.
+                </p>        </div>
+
+        {% if user.is_authenticated %}
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="{% url 'lend_a_farm' %}" class="lend-farm-btn">Lend a Farm</a>
+        </div>
+        {% endif %}
+        <!-- Why Choose Section -->
+        <!-- Why Choose Section -->
+<div class="section" style="background-image: url('https://images.unsplash.com/photo-1506875220262-3f62dc2cc115?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center;">
+    <div style="backdrop-filter: blur(5px); background-color: rgba(255, 255, 255, 0.8); border-radius: 1rem; padding: 2rem;">
+        <h2 style="color: #4caf50; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);">Why Choose ATDC?</h2>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1500076656116-558758c991c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+             alt="Agritourism Center" 
+             style="width: 80%; border-radius: 0.5rem; margin-bottom: 1rem;">
+                <h3>Find an Agritourism Center</h3>
+                <p>Explore our carefully selected centers offering authentic rural experiences.</p>
+            </div>
+            <div class="grid-item">
+                <img src="../static/images/Indian_Farming.jpg" 
+             alt="Adventure" 
+             style="width: 80%; border-radius: 0.5rem; margin-bottom: 1rem;">
+                <h3>Enjoy Your Adventure</h3>
+                <p>Create lasting memories with expert-guided or self-guided experiences.</p>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+<!-- Centers Section -->
+<div class="section">
+    <h2>Explore Our Centers</h2>
+    <div style="text-align: center; margin-top: 2rem;">
+        <a href="{% url 'centres' %}" class="explore-more-btn">Discover More</a>
+    </div>
+</div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="{% static 'images/ATDC-logo-01-01.png' %}" alt="Agritourism India">
+                <p>Keep Farm In The Family, Family In The Farm</p>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>Working Hours: Monday - Saturday</p>
+                <p>10:00 am - 07:00 pm</p>
+                <p>Phone: +91-9226432980</p>
+            </div>
+            <div class="footer-social">
+                <h3>Connect With Us</h3>
+                <div class="footer-social-icons">
+                    <a href="https://www.facebook.com/AgriTourismIndia/"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/agritourismindia/"><i class="fa fa-linkedin"></i></a>
+                    <a href="https://twitter.com/PandurangTaware"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/agritourismindia/"><i class="fa fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UCMQawFaee-k4Kw6t5zqI9Dg"><i class="fa fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2024 Agritourism India. All rights reserved.</p>
+            <p><a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a> | <a href="#">Support</a></p>
+        </div>
+    </footer>
+</main>
+
+<script>
+    // Carousel functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const slides = document.querySelectorAll('.carousel-slide');
+        const prevBtn = document.querySelector('.carousel-btn.prev');
+        const nextBtn = document.querySelector('.carousel-btn.next');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Auto advance slides
+        setInterval(nextSlide, 5000);
+
+        // Button controls
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Initialize
+        showSlide(currentSlide);
+    });
+</script>
